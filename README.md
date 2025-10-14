@@ -57,6 +57,8 @@ npm run lint
 │   │   ├── dashboard/          # Dashboard pages
 │   │   │   ├── attendance/     # Attendance tracking
 │   │   │   │   └── page.tsx    # Attendance page with RFID
+│   │   │   ├── request/        # Event request
+│   │   │   │   └── page.tsx    # Event request form
 │   │   │   └── page.tsx        # Main dashboard
 │   │   ├── layout.tsx          # Root layout component
 │   │   ├── page.tsx            # Council login page
@@ -68,6 +70,7 @@ npm run lint
 ├── BACKEND_INTEGRATION.md      # Login backend guide
 ├── DASHBOARD_BACKEND_INTEGRATION.md  # Dashboard backend guide
 ├── ATTENDANCE_BACKEND_INTEGRATION.md # Attendance & RFID guide
+├── REQUEST_BACKEND_INTEGRATION.md    # Event request guide
 ├── next.config.ts              # Next.js configuration
 ├── tsconfig.json               # TypeScript configuration
 └── tailwind.config.ts          # Tailwind CSS configuration
@@ -85,7 +88,9 @@ npm run lint
 - ✅ Council Login Page (/)
 - ✅ Event Dashboard (/dashboard)
 - ✅ Attendance Page (/dashboard/attendance)
+- ✅ Request Event Page (/dashboard/request)
 - ✅ RFID Scanner Integration
+- ✅ Event Request Form with Validation
 - ✅ Responsive Sidebar Navigation
 - ✅ Real-time Statistics Display
 - ✅ Attendance Charts (Donut & Bar)
@@ -96,7 +101,6 @@ npm run lint
 ## Features to Implement
 
 - ❌ Student Login Page
-- ❌ Request Handling
 - ❌ Past Events View
 - ❌ Reports Generation
 - ❌ User Management
