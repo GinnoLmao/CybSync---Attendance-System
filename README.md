@@ -97,11 +97,10 @@ npm run lint
 - ✅ Attendance Records Table
 - ✅ Upcoming Events Section
 - ✅ Mobile Responsive Design
+- ✅ Student Login Page
+- ✅ Past Events View
 
 ## Features to Implement
 
-- ❌ Student Login Page
-- ❌ Past Events View
-- ❌ Reports Generation
 - ❌ User Management
 - ❌ Backend API Integration
