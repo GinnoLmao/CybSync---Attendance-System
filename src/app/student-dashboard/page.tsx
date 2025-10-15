@@ -170,10 +170,11 @@ export default function StudentDashboard() {
           </div>
 
           {/* Attendance Overview Table */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm mb-8">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-sm mb-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6">Attendance Overview</h2>
             
-            <div className="overflow-x-auto">
+            {/* Desktop Table View (hidden on mobile) */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-200">
@@ -204,6 +205,34 @@ export default function StudentDashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Mobile Card View (visible only on mobile) */}
+            <div className="md:hidden space-y-4">
+              {dashboardData.attendanceHistory.map((record) => (
+                <div
+                  key={record.id}
+                  className="p-4 border border-gray-200 rounded-xl bg-gray-50 space-y-2.5"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-gray-900 mb-1">{record.event}</div>
+                      <div className="text-xs text-gray-600">{record.type}</div>
+                    </div>
+                    <span
+                      className={`text-sm font-semibold ${
+                        record.status === 'on-time' ? 'text-green-600' : 'text-red-600'
+                      }`}
+                    >
+                      {record.status === 'on-time' ? 'On Time' : 'Late'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-600 pt-2 border-t border-gray-200">
+                    <span>{record.date}</span>
+                    <span>{record.time}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

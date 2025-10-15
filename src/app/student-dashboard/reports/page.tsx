@@ -235,7 +235,7 @@ export default function StudentReports() {
         {/* Content */}
         <div className="p-4 sm:p-8">
           {/* Report Sections */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {/* Report Form */}
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden transition-all">
               {/* Section Header - Clickable */}
@@ -266,8 +266,8 @@ export default function StudentReports() {
               {/* Section Content - Expandable */}
               {expandedSection === 'report-form' && (
                 <div className="border-t border-gray-200">
-                  <div className="p-6">
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="p-4 sm:p-6">
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                       {/* Event Title */}
                       <div>
                         <label htmlFor="eventTitle" className="block text-base font-medium text-gray-700 mb-2">
@@ -383,7 +383,7 @@ export default function StudentReports() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="px-12 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors shadow-lg disabled:cursor-not-allowed"
+                          className="w-full sm:w-auto px-8 sm:px-12 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors shadow-lg disabled:cursor-not-allowed"
                         >
                           {isSubmitting ? 'Submitting...' : 'Submit'}
                         </button>
@@ -424,7 +424,7 @@ export default function StudentReports() {
               {/* Section Content - Expandable */}
               {expandedSection === 'previous' && (
                 <div className="border-t border-gray-200">
-                  <div className="p-6">
+                  <div className="p-4 sm:p-6">
                     {isLoadingReports ? (
                       <div className="text-center py-12">
                         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
@@ -439,19 +439,19 @@ export default function StudentReports() {
                         <p className="text-sm mt-1">You haven't submitted any reports yet.</p>
                       </div>
                     ) : (
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         {mockPreviousReports.map((report) => (
                           <div
                             key={report.id}
                             className="bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow"
                           >
-                            <div className="flex items-start justify-between gap-4">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
                               {/* Report Info */}
                               <div className="flex-1 min-w-0">
                                 <h3 className="font-semibold text-gray-900 mb-1">
                                   {report.eventTitle}
                                 </h3>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-gray-600 break-words">
                                   {report.date}| {report.message}
                                 </p>
                               </div>
@@ -459,7 +459,7 @@ export default function StudentReports() {
                               {/* Status Badge */}
                               <div className="flex-shrink-0">
                                 <span
-                                  className={`inline-block px-4 py-1.5 rounded-lg text-sm font-semibold whitespace-nowrap ${
+                                  className={`inline-block px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap ${
                                     report.status === 'resolved'
                                       ? 'text-green-600 bg-green-50'
                                       : report.status === 'pending'

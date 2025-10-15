@@ -263,10 +263,11 @@ export default function StudentAttendance() {
           </div>
 
           {/* Attendance Overview Table */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm mb-8">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-sm mb-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6">Attendance Overview</h2>
             
-            <div className="overflow-x-auto">
+            {/* Desktop Table View (hidden on mobile) */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-200">
@@ -294,23 +295,47 @@ export default function StudentAttendance() {
                 </tbody>
               </table>
             </div>
+
+            {/* Mobile Card View (visible only on mobile) */}
+            <div className="md:hidden space-y-4">
+              {attendanceData.attendanceHistory.map((record) => (
+                <div
+                  key={record.id}
+                  className="p-4 border border-gray-200 rounded-xl bg-gray-50 space-y-2.5"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <div className="text-sm font-semibold text-gray-900 mb-1">{record.event}</div>
+                      <div className="text-xs text-gray-600">{record.type}</div>
+                    </div>
+                    <span className={`text-sm font-semibold ${getStatusColor(record.status)}`}>
+                      {getStatusText(record.status)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-600 pt-2 border-t border-gray-200">
+                    <span>{record.date}</span>
+                    <span>{record.time}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Event Check-In Section */}
           <div className="flex items-center gap-4">
-            <form onSubmit={handleCheckIn} className="flex-1 flex items-center gap-4">
+            <form onSubmit={handleCheckIn} className="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <input
                 type="text"
                 value={eventCode}
                 onChange={(e) => setEventCode(e.target.value)}
                 placeholder="Enter Event"
                 disabled={isSubmitting}
-                className="flex-1 px-6 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white text-gray-900 placeholder-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="flex-1 px-4 sm:px-6 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white text-gray-900 placeholder-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed"
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-12 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors shadow-lg disabled:cursor-not-allowed"
+                className="px-8 sm:px-12 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors shadow-lg disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Checking In...' : 'Enter'}
               </button>
